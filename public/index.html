@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="css/styleindex.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+ 
+    <link rel="icon" href="fotos/icone.png">
+    <title>Doa Div</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />  
+
+
+  <style>
+
+    #perfil{
+        font-size: 120px;
+    }
+
+    
+.page-link {
+    color: black;
+}
+.page-item active{
+    color: black;
+}
+
+</style>
+</head>
+<body>
+
+    <!-- sombra-bar -->
+    <div class="shadow rounded">
+
+        <!-- bar -->
+        <nav class="navbar navbar-dark navbar-expand-sm p-3">
+            <div class="container animacao">
+                <!-- logo -->
+                <a class="navbar-brand d-flex"><img src="fotos/logo.png"></a>
+
+                <!-- itens-bar -->
+                <div class="collapse navbar-collapse" id="menuNavbar">
+                    <div class="navbar-nav d-flex">
+                        <a href="#" class="nav-link active nav-active"><strong>Principal</strong></a>
+                        <a href="sobre.html" class="nav-link">Sobre</a>
+                    </div>
+                </div>
+                <!-- icone de perfil -->
+                <a href="" class="text-end" data-bs-toggle="offcanvas" data-bs-target="#painel"><i class="bi bi-person-circle icon-perfil"></i><a>
+                 <!-- botão com opção quando tela fica pequena -->
+                 <button class="navbar-toggler" type="button"
+                 data-bs-toggle="collapse"
+                 data-bs-target="#menuNavbar">
+                 <span class="navbar-toggler-icon"></span>
+             </button>
+            </div>
+        </nav>
+        </div>
+
+         <!-- não logado -->
+
+         
+         <div class="offcanvas offcanvas-end" id="painel" tabindex="-1">
+          <div class="offcanvas-header">
+              <h5 class="offcanvas-title"></h5>
+              <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+
+          </div>
+          <div class="offcanvas-body">
+
+                  <div>
+                      <a href="login.html" class="btn btn-outline-dark d-block m-5">Fazer login</a>
+                      <a href="cadastroONG.html" class="btn btn-outline-dark d-block m-5">Cadastrar como ONG</a>
+                      <a href="cadastro.html" class="btn btn-outline-dark d-block m-5">Cadastrar para doar</a>
+                  </div>
+
+
+          </div>
+
+      </div> 
+
+      <!-- logado -->
+     <!-- <div class="offcanvas offcanvas-end" id="painel" tabindex="-1">
+      <div class="offcanvas-header">
+          <h5 class="offcanvas-title">Perfil</h5>
+        
+          <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+      </div>
+      <div class="offcanvas-body">
+              <div class="container-fluid text-center">
+                
+                      <i class="bi bi-person-fill" id="perfil"></i>
+                      <h4 class="d-block my-2">Resende</h4>
+                      <h4 class="d-block my-2">resendo@gmail.com</h4>
+                      
+                      <a  href="recuperar_senha.html" class="d-block my-2" id="option-perfil-recSenha">Recuperar senha</a>
+                      <a  href="" class="d-block my-2" id="option-perfil-sair">
+                        
+                      <i class="bi bi-box-arrow-left"  id="option-perfil-sair"></i> Sair</a>
+              
+              </div>
+             
+          
+      </div>
+  </div> -->
+
+    <!-- body -->
+    <div class="container mt-3 animacao min-vh-100">
+        <!-- linha com titulo e filtro -->
+        <div class="row row-cols-1 row-cols-lg-2">
+
+            <!-- titulo -->
+            <h1 class="col text-center text-lg-start">ONGS parceiras</h1>
+            <!-- filtro -->
+             <form action="" class="d-inline-block collapse"> 
+                <div class="input-group col my-3">
+                    <input type="search" id="search-input" class="form-control" placeholder="Buscar pela ONG" onkeyup="search()">
+                    <script>
+                       function removeAccents(str) {
+                             return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                        }
+
+                       function search() {
+                             const input = removeAccents(document.querySelector("#search-input").value.toLowerCase());
+                             const ongCards = document.querySelectorAll(".col-12.col-sm-6.col-lg-4");
+                             ongCards.forEach(card => {
+                            const cardTitle = removeAccents(card.querySelector(".card-title").innerText.toLowerCase());
+                             if (cardTitle.includes(input)) {
+                                    card.style.display = "block";
+                              } else {
+                                  card.style.display = "none";
+                                  }
+                              });
+                        }
+                    </script>
+                </div>
+            </form>
+        </div>
+
+        <!-- instrução
+        <h5 class="py-3">Escolha a instituição de preferência para realizar a doação:</h5> -->
+
+        <!-- cards -->
+        <div class="container mt-2">
+        <div class="row g-5 mx-3">
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                    <img src="fotos/ACCCOM.jpg" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">ACCCOM</h5>
+                      <p class="card-text">Ong que visa ajudar pessoas no tratamento do câncer.</p>
+                      <a href="infoACCCOM.html" class="btn btn-dark btn-lg-lg mt-3">Contribuir <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                    <img src="fotos/anjosdeluz.PNG" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Anjos de Luz</h5>
+                      <p class="card-text">Ong que é destinado a ajudar famílias em situações de vulnerabilidade social em Divinópolis/MG e região.</p>
+                      <a href="infoAnjos.html" class="btn btn-dark btn-lg-lg mt-3">Contribuir <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                    <img src="fotos/ceu azul.jpeg" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Céu Azul</h5>
+                      <p class="card-text">Ong destinada aos cuidados e evoluções de crianças com Transtorno do Espectro Autista</p>
+                      <a href="infoCeu.html" class="btn btn-dark btn-lg-lg mt-3">Contribuir <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                    <img src="fotos/lacodeabraco.PNG" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Laços de Abraços</h5>
+                      <p class="card-text">Ong que ajuda várias crianças e idosos acamados.</p>
+                      <a href="infoLacos.html" class="btn btn-dark btn-lg-lg mt-3">Contribuir <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                    <img src="fotos/Spad.jpeg" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Spad</h5>
+                      <p class="card-text">Ong que ajuda várias animais de rua.</p>
+                      <a href="infoSpad.html" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                    <img src="fotos/adefom.jpeg" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">ADEFOM</h5>
+                      <p class="card-text">Promoção, inclusão e defesa dos direitos da Pessoa com Deficiência.</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <!-- <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                <img src="fotos/semfoto.png" class="card-img-top img-fluid" alt="...">
+                    <div class="card-body text-center">
+                      <h5 class="card-title">ASSOCIACAO DE MORADORES DO BAIRRO PADRE EUSTAQUIO</h5>
+                      <p class="card-text"> Atividades de associações de defesa de direitos sociais. </p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div> -->
+
+
+
+            
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/missaomariadenazare.jpg" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Missão Maria de Nazaré</h5>
+                      <p class="card-text">Na Missão Divinópolis desenvolvemos diversos trabalhos de evangelização e sociais.</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <!-- <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/semfoto.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Aplisdir</h5>
+                      <p class="card-text"> Associacao dos Profissionais Trad Interpretes do Par-Ling-Libras-Lingua Port de Div e Reg Centro Oeste Mg</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div> -->
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/cordasom.jpg" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">ACCOS</h5>
+                      <p class="card-text">Fomento à educação, cultura e esporte.</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/asfad.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">ASFAD</h5>
+                      <p class="card-text">Associação de farmácias e drogarias, com a finalidade de auxiliar pequenos negócios a desenvolver</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/inec.jpg" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">INECC</h5>
+                      <p class="card-text">O INECC tem como objetivo principal a defesa dos direitos através da busca do desenvolvimento social</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+         
+
+            <!-- <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/semfoto.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Associacao de Moradores do Bairro Costa Azul </h5>
+                      <p class="card-text">atividades de associações de defesa de direitos sociais ligadas a cultura e arte</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div> -->
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/proinova.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">ProInova Engenharia Júnior  </h5>
+                      <p class="card-text">Formar jovens inovadores interessados em compartilhar conhecimento e realizar serviços de melhoria com dedicação.</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/helenaantipofe.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Instituto Helena Antipoff</h5>
+                      <p class="card-text">Oferece às pessoas com deficiência e suas famílias serviços de assistência social e cuidados com a saúde.</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/nasce.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">NASCE</h5>
+                      <p class="card-text">Presta assistência a pessoas com deficiências e jovens em situação de exclusão social.</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+           
+            
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/devoltapracasa.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">De volta pra casa</h5>
+                      <p class="card-text">Busca soluções para as questões relativas ao abandono de crianças e adolescentes através do fortalecimento e incentivo à Adoção</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <!-- <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/devoltapracasa.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">ASBEC-Associação Beneficente ao Carente</h5>
+                      <p class="card-text">ASBEC-Associação Beneficente ao Carente</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div> -->
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/soscancer.jpg" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">SOS do câncer</h5>
+                      <p class="card-text">Amparar pessoas que convivem com o câncer e crianças com enfermidades raras, oferecendo serviços social</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/anjosdecoracao.jpg" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Anjos de coração</h5>
+                      <p class="card-text">Ampara crianças cardíacas ou com doença rara, com medicamentos, suplementos alimentares, exames, consulta e cesta básica</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/coracaosalva.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">Coração que salva</h5>
+                      <p class="card-text">Instituição filantrópica sem fins lucrativos, que abrange hoje toda a Região Centro Oeste-MG</p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/GEEC.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">GEEC</h5>
+                      <p class="card-text">Desenvolve diversos projetos culturais, educacionais, científicos, esportivos, ambientais, de saúde e de assistência social,
+                    </p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+                <div class="card mx-2">
+                 <img src="fotos/apan.png" class="card-img-top img-fluid" alt="..."> 
+                    <div class="card-body text-center">
+                      <h5 class="card-title">APAN</h5>
+                      <p class="card-text">ASSOCIAÇÃO DE PROTEÇÃO E ASSISTENCIAS AOS NECESSITADOS Esplanada
+                    </p>
+                      <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                    </div>
+                  </div>
+            </div>
+
+
+            <div class="col-12 col-sm-6 col-lg-4"> 
+              <div class="card mx-2">
+               <img src="fotos/apae.jpg" class="card-img-top img-fluid" alt="..."> 
+                  <div class="card-body text-center">
+                    <h5 class="card-title">Apae</h5>
+                    <p class="card-text">Assistência Social e Saúde para pessoas com Autismo, Deficiência intelectual e múltipla!
+                    </p>
+                    <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                  </div>
+                </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-4"> 
+            <div class="card mx-2">
+             <img src="fotos/imaculadaconceicao.png" class="card-img-top img-fluid" alt="..."> 
+                <div class="card-body text-center">
+                  <h5 class="card-title">Associação Imaculada Conceição</h5>
+                  <p class="card-text">Promoção Humana e Social e proteção à família
+                  </p>
+                  <a href="" class="btn btn-dark btn-lg-lg mt-3">Contribuir  <i class="bi bi-arrow-right-circle"></i></a>
+                </div>
+              </div>
+        </div>
+
+
+            
+          
+        </div>
+        
+       
+
+        
+          <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+              <a class="page-link">Previous</a>
+            </li>
+            <li class="page-item active"><a class="page-link" href="index.html">1</a></li>
+            <li class="page-item"><a class="page-link" href="">2</a></li>
+            
+            <li class="page-item">
+              <a class="page-link" href="#">Next</a>
+            </li>
+          </ul>
+        
+
+    </div>
+    </div>
+
+
+   
+
+    <div class=" p-5 d-block"></div>
+    <footer class="footer-footer p-4 ">
+        Copyright © 2023 Doa Div. Todos os direitos reservados.
+        <br>
+        <a href="https://instagram.com/doadiv?igshid=ZDc4ODBmNjlmNQ=="><i class="bi bi-instagram"></i> Instagram  </a>
+        <br>
+        <a href="#"><i class="bi bi-linkedin"></i> Linkedin</a>
+    </footer>
+</body>
+</html>
